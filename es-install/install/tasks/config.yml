@@ -1,0 +1,10 @@
+- name: copy template
+  template: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'install/template/jvm.options', dest: '/etc/elasticsearch/jvm.options' }
+    - { src: 'install/template/elasticsearch.yml', dest: '/etc/elasticsearch/elasticsearch.yml' }
+
+- name: Restart elasticsearch
+  service:
+    name: elasticsearch
+    state: restarted

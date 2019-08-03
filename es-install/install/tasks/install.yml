@@ -1,0 +1,13 @@
+
+- name: copy file
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'install/template/elasticsearch-7.2.0-x86_64.rpm', dest: '/tmp/elasticsearch-7.2.0-x86_64.rpm' }
+- name: install es
+  command: rpm -ivh /tmp/elasticsearch-7.2.0-x86_64.rpm
+#  ignore_errors: true
+
+- name: Enable service elasticsearch
+  service:
+    name: elasticsearch
+    enabled: yes

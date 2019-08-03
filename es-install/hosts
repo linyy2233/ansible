@@ -1,0 +1,21 @@
+[es:children]
+es_master
+es_data
+[es_master]
+172.27.0.11
+
+[es_data]
+172.27.0.12 value=100
+
+[es_master:vars]
+node_master=true
+node_data=false
+[es_data:vars]
+node_master=false
+node_data=true
+
+[all:vars]
+tcp_port=9300
+http_port=9200
+data_path=/var/lib/elasticsearch
+logs_path=/var/log/elasticsearch

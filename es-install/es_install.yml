@@ -1,0 +1,8 @@
+---
+- hosts: es_master
+  remote_user: lin
+  gather_facts: True
+  become: yes
+  become_method: sudo
+  roles:
+    - install
